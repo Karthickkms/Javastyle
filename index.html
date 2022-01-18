@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+    var g=["Hello",48];
+    console.log(g[1]);
+                            // Array collection of multiple data types
+
+    var h = {
+                         // Oject is key value pair
+        name: "Saravanan",
+        age:28,
+        State:"Tamilnadu",
+
+    }
+    console.log(h.age)
+
+                             // A block of code with a name
+                             // which can be reused again and again
+function newFun(name,size){
+    console.log("Twinkle Twinkle  "+size +" "+name)
+}
+newFun("Star","Big")
+newFun("Moon","Small")    
+newFun("Earth","Big")   
+
+for(var y =1;y <= 5; y++){
+    var res=[];
+   for(var x=1; x <= y; x++){
+       res.push(x)
+   } 
+   console.log(res.join(","))
+}
+
+
+var input = [
+     {
+          "id": 1,
+          "title": "Title 1",
+          "childrens": [
+               {
+                    "id": 2,
+                    "title": "Title 2",
+                    "childrens": []
+               }
+          ]
+     },
+     {
+          "id": 3,
+          "title": "Title 3",
+          "childrens": [
+               {
+                    "id": 4,
+                    "title": "Title 4",
+                    "childrens": [
+                         {
+                              "id": 5,
+                              "title": "Title 5",
+                              "childrens": []
+                         }
+                    ]
+               }
+          ]
+     }
+]
+
+var result=[];
+function recurse(inputPassed) {
+     for(let i=0;i<inputPassed.length;i++){
+          let obj={};
+          obj.id=inputPassed[i].id;
+          obj.title=inputPassed[i].title;
+          obj.childrens=[];
+          if(inputPassed[i].childrens.length >0) {
+               recurse(inputPassed[i].childrens);
+          }
+          else{
+               // stop calling recurse()
+          }
+          result.push(obj);
+     }
+}
+recurse(input);
+result.sort((a,b)=> (a.id > b.id)?1:-1)
+console.log("Result",result);
+</script>
+</body>
+</html>
